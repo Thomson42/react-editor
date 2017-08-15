@@ -1,0 +1,10 @@
+
+label {
+  display: block;
+}
+
+.display {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #aaa;
+}
