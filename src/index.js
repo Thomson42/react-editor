@@ -4,6 +4,11 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App initialMessage="Hello 401"/>, document.getElementById('root'));
+ReactDOM.render(<App initialMessage="Waba Laba Dub Dub!" 
+initialFontSize={24} 
+initialBoldType = "normal" 
+initialStyle = 'normal'
+initialTextAlign = 'left'/>, 
+document.getElementById('root'));
 
 registerServiceWorker();

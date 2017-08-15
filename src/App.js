@@ -11,7 +11,12 @@ class App extends Component {
 
     this.state = {
       message: props.initialMessage,
-      color: '#4682b4'
+      color: '#4682b4',
+      fontSize: props.initialFontSize,
+      fontWeight: props.initialBoldType,
+      fontStyle: props.initialStyle,
+      textAlign: props.initialTextAlign,
+      backgroundColor: '#ffffff'
     }
   }
 
@@ -23,7 +28,8 @@ class App extends Component {
 
   render() {
 
-    const header = this.state.message.length < 20 ? shortHeader : longHeader;
+    //const header = this.state.message.length < 20 ? shortHeader : longHeader;
+    const header = <h1>Welcome to React Editor</h1>
 
     return (
       <div>
@@ -31,7 +37,7 @@ class App extends Component {
         <div>
           <label>
             Message:
-            <input name="message" value={this.state.message} 
+            <input className="display" name="message" value={this.state.message} 
               onChange={({ target }) => this.handleChange(target)}/>
           </label>
           <label>
@@ -40,8 +46,49 @@ class App extends Component {
               onChange={({ target }) => this.handleChange(target)}/>
           </label>
         </div>
+          <label>
+            Font-Size:
+            <input  className="display" name="fontSize"  value={this.state.fontSize} 
+            type="number" onChange={({ target }) => this.handleChange(target)}/>
+            </label>
+            <label>
+            Bold:
+            <input className="display" name="fontWeight"  
+            value= {this.state.fontWeight == "bold" ? "normal" :  "bold"}
+            type="checkbox"onChange={({ target }) => this.handleChange(target)}/>
+            </label>
+            <label>
+            Styles:
+            <input list="Styles" className="display" name="fontStyle"  
+            onChange={({ target }) => this.handleChange(target)}/>
+            <datalist id="Styles">
+              <option value="normal"onChange={({ target }) => this.handleChange(target)}/>
+              <option value="italic"onChange={({ target }) => this.handleChange(target)}/>
+              <option value="oblique"onChange={({ target }) => this.handleChange(target)}/>
+              </datalist>
+            </label>
+            <label>
+            Alignment:
+            <input list="Alignments" className="display" name="textAlign"  
+            onChange={({ target }) => this.handleChange(target)}/>
+            <datalist id="Alignments">
+              <option value="left"onChange={({ target }) => this.handleChange(target)}/>
+              <option value="center"onChange={({ target }) => this.handleChange(target)}/>
+              <option value="right"onChange={({ target }) => this.handleChange(target)}/>
+              </datalist>
+            </label>
+            <label>
+            Background Color:
+            <input name="backgroundColor" value={this.state.backgroundColor} type="color" 
+              onChange={({ target }) => this.handleChange(target)}/>
+          </label>
         <div className="display" style={{
-          color: this.state.color
+          color: this.state.color,
+          fontSize: this.state.fontSize,
+          fontWeight: this.state.fontWeight,
+          fontStyle: this.state.fontStyle,
+          textAlign: this.state.textAlign,
+          backgroundColor: this.state.backgroundColor
         }}>
           {this.state.message}
         </div>
